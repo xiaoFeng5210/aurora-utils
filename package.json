@@ -1,0 +1,23 @@
+{
+  "name": "aurora-utils",
+  "version": "1.0.0",
+  "description": "专属自己的npm工具包",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoFeng5210/aurora-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaoFeng5210/aurora-utils/issues"
+  },
+  "homepage": "https://github.com/xiaoFeng5210/aurora-utils#readme",
+  "devDependencies": {
+    "vitest": "^1.2.1"
+  }
+}
