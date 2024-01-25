@@ -12,6 +12,9 @@ export function vectorLength(x, y) {
  * 向量加法
  */
 export function vectorAdd(v1, v2) {
+  if (v1.length !== 2 || v2.length !== 2) {
+    throw new Error('2个向量长度必须为2');
+  }
   return [v1[0] + v2[0], v1[1] + v2[1]];
 }
 
