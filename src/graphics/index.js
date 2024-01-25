@@ -31,3 +31,37 @@ export function vectorMulti(v, num) {
 export function vectorDot(v1, v2) {
   return v1[0] * v2[0] + v1[1] * v2[1];
 }
+
+
+/**
+ * 向量夹角cos值
+ */
+export function calCos(a, b) {
+  let dotProduct = vectorDot(a, b);
+  let d = Math.sqrt(a[0] * a[0] + a[1] * a[1]) * Math.sqrt(b[0] * b[0] + b[1] * b[1]);
+  return dotProduct / d;
+}
+
+/**
+ * 计算 点1指点2形成 的向量
+ */
+export function getCosBy2pt(x, y, cx, cy) {
+  let a = [x - cx, y - cy];
+  let b = [0, -1];
+  return calCos(a, b);
+}
+
+/**
+ * 求旋转角度
+ * @param cx 
+ * @param cy 
+ * @param x 
+ * @param y 
+ * @returns 
+ */
+export function calAngle(cx, cy, x, y) {
+  const radian = getCosBy2pt(x, y, cx, cy);
+  let angle = Math.acos(radian) * 180 / Math.PI;
+  if (x < cx) angle = -angle;
+  return angle;
+}
