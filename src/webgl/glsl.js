@@ -3,7 +3,7 @@ export function circleSharder(params) {
    return `
      float dist = distance(gl_PointCoord, vec2(0.5, 0.5));
      if (dist > 0.5) {
-       gl_FragColor = ${params}
+       gl_FragColor = ${params};
      } else {
       discard;
      }
