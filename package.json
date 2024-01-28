@@ -1,6 +1,6 @@
 {
   "name": "aurora-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "专属自己的npm工具包",
   "main": "index.js",
   "scripts": {
