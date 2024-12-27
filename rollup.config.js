@@ -33,6 +33,7 @@ export default {
       tsconfig: './tsconfig.json',
       declaration: true,
       declarationDir: './dist',
+      declarationMap: true,
     }),
     babel({
       babelHelpers: 'bundled',
@@ -46,7 +47,7 @@ export default {
             chrome: '67',
             safari: '11.1',
           },
-          useBuiltIns: 'usage',
+          useBuiltIns: 'entry', // entry是直接使用，usage需要引入core-js
           corejs: 3,
         }],
         '@babel/preset-typescript'

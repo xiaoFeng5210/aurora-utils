@@ -1,7 +1,7 @@
 /**
  * 找数组的最后几位元素
  */
-export function last(arr: any[], n: number) {
+export function last(arr: any[], n?: number) {
   if (!Array.isArray(arr)) {
     throw new Error('第一个参数必须是数组')
   }
