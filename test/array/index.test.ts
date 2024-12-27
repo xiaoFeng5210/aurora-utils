@@ -4,21 +4,21 @@ import { last } from '../../packages/array'
 describe('Array Utils', () => {
   describe('last', () => {
     it('should return the last element of array', () => {
-      expect(last([1, 2, 3])).toBe(3)
-      expect(last(['a', 'b', 'c'])).toBe('c')
+      expect(last([1, 2, 3])).toEqual([3])
+      expect(last(['a', 'b', 'c'])).toEqual(['c'])
     })
 
     it('should return undefined for empty array', () => {
-      expect(last([])).toBeUndefined()
+      expect(last([])).toEqual([])
     })
 
     it('should handle array with single element', () => {
-      expect(last([1])).toBe(1)
+      expect(last([1])).toEqual([1])
     })
 
     it('should handle array with undefined/null values', () => {
-      expect(last([1, undefined])).toBeUndefined()
-      expect(last([1, null])).toBeNull()
+      expect(last([1, undefined])).toEqual([undefined])
+      expect(last([1, null])).toEqual([null])
     })
 
     it('should handle array with negative n', () => {
@@ -39,6 +39,10 @@ describe('Array Utils', () => {
 
     it('查找最后两位', () => {
       expect(last([1, 2, 3, 4, 5], 2)).toEqual([4, 5])
+    })
+
+    it('查找最后一位', () => {
+      expect(last([1, 2, 3, 4, 5], 1)).toEqual([5])
     })
   })
 }) 
