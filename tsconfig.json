@@ -7,6 +7,9 @@
       "ESNext",
       "DOM"
     ],
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     // 输出配置
     "outDir": "./dist",

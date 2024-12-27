@@ -1,10 +1,11 @@
 import typescript from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
 import pkg from './package.json' assert { type: "json" }
 
 export default {
-  input: 'src/index.ts', // 入口文件
+  input: 'packages/index.ts',
   output: [
     {
       file: pkg.main,
