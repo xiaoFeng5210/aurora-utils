@@ -8,7 +8,7 @@ describe('Array Utils', () => {
       expect(last(['a', 'b', 'c'])).toEqual(['c'])
     })
 
-    it('should return undefined for empty array', () => {
+    it('should return empty array for empty array', () => {
       expect(last([])).toEqual([])
     })
 
