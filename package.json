@@ -25,12 +25,16 @@
   },
   "homepage": "https://github.com/xiaoFeng5210/aurora-utils#readme",
   "devDependencies": {
-    "vitest": "^1.2.1",
-    "rollup": "^4.9.0",
-    "@rollup/plugin-typescript": "^11.1.5",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.2.0",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^4.9.0",
+    "tslib": "^2.6.0",
     "typescript": "^5.0.0",
-    "tslib": "^2.6.0"
+    "vitest": "^1.2.1"
   }
 }

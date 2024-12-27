@@ -23,6 +23,25 @@ export default {
       declaration: true,
       declarationDir: './dist',
     }),
+    babel({
+      babelHelpers: 'bundled',
+      extensions: ['.ts', '.js'],
+      presets: [
+        ['@babel/preset-env', {
+          targets: {
+            ie: '11',
+            edge: '17',
+            firefox: '60',
+            chrome: '67',
+            safari: '11.1',
+          },
+          useBuiltIns: 'usage',
+          corejs: 3,
+        }],
+        '@babel/preset-typescript'
+      ],
+      exclude: 'node_modules/**'
+    }),
     resolve(), // 解析第三方依赖
     commonjs(), // 将 CommonJS 转换为 ES Module
   ],
