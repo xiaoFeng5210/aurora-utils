@@ -2,9 +2,16 @@
   "name": "aurora-utils",
   "version": "0.0.4",
   "description": "专属自己的npm工具包",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -18,6 +25,12 @@
   },
   "homepage": "https://github.com/xiaoFeng5210/aurora-utils#readme",
   "devDependencies": {
-    "vitest": "^1.2.1"
+    "vitest": "^1.2.1",
+    "rollup": "^4.9.0",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
+    "typescript": "^5.0.0",
+    "tslib": "^2.6.0"
   }
 }
