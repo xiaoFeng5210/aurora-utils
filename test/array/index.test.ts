@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { last } from '../../packages/array'
+import { last, arrAt } from '../../packages/array'
 
 describe('Array Utils', () => {
   describe('last', () => {
@@ -45,4 +45,39 @@ describe('Array Utils', () => {
       expect(last([1, 2, 3, 4, 5], 1)).toEqual([5])
     })
   })
-}) 
+
+  describe('arrAt', () => {
+    it('查找最后一位', () => {
+      expect(arrAt([1, 2, 3, 4, 5], -1)).toEqual(5)
+    })
+
+    it('查找倒数第二位', () => {
+      expect(arrAt([1, 2, 3, 4, 5], -2)).toEqual(4)
+    })
+
+    it('查找第一位', () => {
+      expect(arrAt([1, 2, 3, 4, 5], 0)).toEqual(1)
+    })
+
+    it('查找第二位', () => {
+      expect(arrAt([1, 2, 3, 4, 5], 1)).toEqual(2)
+    })
+
+    it('查找不在数组长度范围内', () => {
+      expect(arrAt([1, 2, 3, 4, 5], 5)).toEqual(5)
+    })
+
+    it('查找负数超过数组长度  ', () => {
+      expect(arrAt([1, 2, 3, 4, 5], -6)).toEqual(1)
+    })
+
+    it('查找负数超过数组长度  ', () => {
+      expect(arrAt([1, 2, 3, 4, 5], -6)).toEqual(1)
+    })
+
+    it('查找负数，正好查到数组长度', () => {
+      expect(arrAt([1, 2, 3, 4, 5], -5)).toEqual(1)
+    })
+  })
+})
+
