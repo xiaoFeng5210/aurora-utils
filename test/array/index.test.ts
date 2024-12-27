@@ -32,5 +32,13 @@ describe('Array Utils', () => {
     it('should handle array with n equal to array length', () => {
       expect(last([1, 2, 3], 3)).toEqual([1, 2, 3])
     })
+
+    it('should handle array with n equal to 0', () => {
+      expect(last([1, 2, 3], 0)).toEqual([])
+    })
+
+    it('查找最后两位', () => {
+      expect(last([1, 2, 3, 4, 5], 2)).toEqual([4, 5])
+    })
   })
 }) 
