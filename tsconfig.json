@@ -40,7 +40,7 @@
     "removeComments": false
   },
   "include": [
-    "src/**/*"
+    "packages/**/*"
   ],
   "exclude": [
     "node_modules",
