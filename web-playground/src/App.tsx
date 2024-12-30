@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { webglUtils } from '../../dist/index.esm.js';
 
 function App() {
+  const [glObj, setGlObj] = useState<WebGLRenderingContext | null>(null)
   useEffect(() => {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
     const gl = canvas.getContext('webgl');
     const result = webglUtils.initProgramAndShaders(gl)
     if (result) {
+      setGlObj(gl)
       const program = gl!.program
 
       // 4. 创建三角形顶点数据
@@ -29,10 +31,16 @@ function App() {
     }
   }, [])
 
+  function clearAll() {
+    webglUtils.clearWebglBackground(glObj, [0.0, 0.0, 0.0, 1.0])
+  }
+
   return (
     <div className="App">
       <div className="actions">
-
+        <button onClick={clearAll}>
+          清除画布
+        </button>
       </div>
       <canvas id="canvas" width="500px" height="500px">
       </canvas>
