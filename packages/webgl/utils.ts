@@ -22,6 +22,35 @@ function updateProgramAndShaders(gl: WebGLRenderingContext, vsSource = '', fsSou
   return false;
 }
 
+/**
+ * * 通用通过顶点绘制函数,重要函数
+ * @param gl WebGL上下文
+ * @param program 着色器程序
+ * @param vertices 顶点数据
+ * @param drawMode 绘制模式
+ * @param count 顶点个数
+ */
+function drawGraphicFromPosition(
+  gl: WebGLRenderingContext,
+  program: WebGLProgram,
+  vertices: Float32Array,
+  drawMode: number = gl.TRIANGLES,
+  count: number
+) {
+  // 1. 创建和绑定缓冲区
+  const buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+  // 2. 设置顶点属性
+  const positionAttributeLocation = gl.getAttribLocation(program, "a_Position");
+  gl.enableVertexAttribArray(positionAttributeLocation);
+  gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+
+  // 3. 绘制
+  gl.drawArrays(drawMode, 0, count);
+}
+
 function initProgramAndShaders(gl: WebGLRenderingContext) {
   const vsSource = `
     attribute vec4 a_Position;
@@ -192,4 +221,5 @@ export {
   isPC,
   worldPos,
   clearWebglBackground,
+  drawGraphicFromPosition
 };
