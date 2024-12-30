@@ -4,4 +4,4 @@ describe('Aurora Utils', () => {
   it('should be defined', () => {
     expect(true).toBe(true)
   })
-}) 
+})

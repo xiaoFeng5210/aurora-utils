@@ -1,7 +1,7 @@
 // import { Vector3 } from 'https://unpkg.com/three/build/three.module.js';
 import { Vector3 } from 'three';
 
-function initShaders(gl: WebGLRenderingContext, vsSource: string, fsSource: string) {
+function updateProgramAndShaders(gl: WebGLRenderingContext, vsSource = '', fsSource = '') {
   //创建程序对象
   const program = gl.createProgram()!;
   //建立着色对象
@@ -13,23 +13,41 @@ function initShaders(gl: WebGLRenderingContext, vsSource: string, fsSource: stri
   gl.attachShader(program, fragmentShader);
   //连接webgl上下文对象和程序对象
   gl.linkProgram(program);
-  //启动程序对象
-  gl.useProgram(program);
-  //将程序对象挂到上下文对象上
-  (gl as any).program = program;
-  return true;
+  const success = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (success) {
+    (gl as any).program = program;
+    gl.useProgram(program);
+    return true;
+  }
+  return false;
 }
+
+function initProgramAndShaders(gl: WebGLRenderingContext) {
+  const vsSource = `
+    attribute vec4 a_Position;
+    void main() {
+      gl_Position = a_Position;
+    }
+  `
+  const fsSource = `
+    void main() {
+      gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+  `
+  return updateProgramAndShaders(gl, vsSource, fsSource)
+}
+
 function createProgram(gl: WebGLRenderingContext, vsSource: string, fsSource: string) {
-  //创建程序对象
+  // 创建程序对象
   const program = gl.createProgram()!;
-  //建立着色器对象
+  // 建立着色器对象
   const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource)!;
   const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource)!;
-  //把顶点着色器对象装进程序对象中
+  // 把顶点着色器对象装进程序对象中
   gl.attachShader(program, vertexShader);
-  //把片元着色器对象装进程序对象中
+  // 把片元着色器对象装进程序对象中
   gl.attachShader(program, fragmentShader);
-  //连接webgl上下文对象和程序对象
+  // 连接webgl上下文对象和程序对象
   gl.linkProgram(program);
   return program
 }
@@ -41,8 +59,12 @@ function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
   gl.shaderSource(shader, source);
   //编译着色器对象
   gl.compileShader(shader);
-  //返回着色器对象
-  return shader;
+  const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  if (success) {
+    return shader;
+  } else {
+    return false
+  }
 }
 
 function getMousePosInWebgl({ clientX, clientY }: { clientX: number, clientY: number }, canvas: HTMLCanvasElement) {
@@ -151,9 +173,15 @@ function worldPos({ clientX, clientY }: { clientX: number, clientY: number }, ca
   )
 }
 
+function clearWebglBackground(gl: WebGLRenderingContext, color?: number[]) {
+  gl.clearColor(color?.[0] ?? 0.0, color?.[1] ?? 0.0, color?.[2] ?? 0.0, color?.[3] ?? 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+}
+
 export {
   imgPromise,
-  initShaders,
+  initProgramAndShaders,
+  updateProgramAndShaders,
   createProgram,
   getMousePosInWebgl,
   glToCssPos,
@@ -163,4 +191,5 @@ export {
   parseColorStops,
   isPC,
   worldPos,
+  clearWebglBackground,
 };
