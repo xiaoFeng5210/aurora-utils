@@ -33,24 +33,12 @@ function App() {
 
   function drawRectFromWebgl() {
     if (!glObj) return
-    const gl = glObj
-    const program = gl!.program
-
-    const vertices = new Float32Array([
+    webglUtils.drawGraphicFromPosition(glObj, glObj!.program, new Float32Array([
       -0.5, 0.5,   // 左上
       -0.5, -0.5,  // 左下
       0.5, 0.5,    // 右上
       0.5, -0.5    // 右下
-    ]);
-
-    const pointerBuffer = gl!.createBuffer() // 创建缓冲区
-    gl!.bindBuffer(gl!.ARRAY_BUFFER, pointerBuffer) // 绑定缓冲区
-    gl!.bufferData(gl!.ARRAY_BUFFER, vertices, gl!.STATIC_DRAW)
-
-    const positionAttributeLocation = gl!.getAttribLocation(program, "a_Position")
-    gl!.enableVertexAttribArray(positionAttributeLocation) // 启用顶点属性
-    gl!.vertexAttribPointer(positionAttributeLocation, 2, gl!.FLOAT, false, 0, 0) // 指定顶点数据
-    gl!.drawArrays(gl!.TRIANGLE_STRIP, 0, 4)
+    ]), glObj!.TRIANGLE_STRIP, 4)
   }
 
   function clearAll() {
