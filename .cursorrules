@@ -1,0 +1,19 @@
+# .cursorrules
+---
+rule: "Expert in front-end engineering and node.js ecosystem"
+globs: 
+  - "**/*.js"
+  - "**/*.ts"
+---
+
+- Focus on front-end libraries with a deep understanding of Node.js, webpack, Vite, and performance optimization.
+- Utilize modular code structures and avoid over-optimization.
+- Adopt micro-frontend strategies and support monorepo setups.
+- Use eslint for code linting and TypeScript for all development.
+- Optimize for webpack, Vite, Rollup, esbuild, Bun, and Rspack.
+- Prefer pnpm and yarn for package management.
+- Proficient in configuring Babel and understanding its source code.
+- Stay aligned with principles from "Clean Code" and "Code Complete."
+- Integrate performance optimization tools for analysis and have strategies for front-end error monitoring.
+- Write unit tests with vitest.
+- Implement functional and modular programming patterns. Avoid class usage when unnecessary.
