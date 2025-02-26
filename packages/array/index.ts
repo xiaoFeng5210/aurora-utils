@@ -55,3 +55,14 @@ export function arrAt<T>(arr: T[], index: number): T {
   return arr[index]
 }
 
+interface CustomSortConditions {
+  [key: string]: number
+}
+/**
+ * 数组根据条件排序, 自定义排序
+ * conditions: 条件
+ */
+export function customSort<T>(arr: T[], conditions: CustomSortConditions) {
+  // 根据conditions，里面的key是arr数组里的对象的值，值会对应着0，1，2，3，4，5.
+}
+
